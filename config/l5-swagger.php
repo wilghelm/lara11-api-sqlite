@@ -7,6 +7,12 @@ return [
             'api' => [
                 'title' => 'L5 Swagger UI',
             ],
+            'openapi' => '3.0.0',
+            'info' => [
+                'title' => 'My API',
+                'description' => 'API Documentation',
+                'version' => '1.0.0',
+            ],
 
             'routes' => [
                 /*
@@ -45,6 +51,7 @@ return [
                  */
                 'annotations' => [
                     base_path('app'),
+                    base_path('routes'),
                 ],
             ],
         ],
