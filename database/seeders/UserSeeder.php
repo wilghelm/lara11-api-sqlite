@@ -10,7 +10,6 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        // Створення кількох користувачів вручну
         User::create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
@@ -23,7 +22,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'),
         ]);
 
-        // Додавання випадкових користувачів за допомогою фабрики
         User::factory()->count(10)->create();
     }
 }
