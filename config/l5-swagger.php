@@ -1,5 +1,14 @@
 <?php
 
+/**
+* @OA\SecurityScheme(
+ *     securityScheme="sanctum",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT"
+    * )
+*/
+
 return [
     'default' => 'default',
     'documentations' => [
@@ -52,6 +61,7 @@ return [
                 'annotations' => [
                     base_path('app'),
                     base_path('routes'),
+                    base_path('app/Http/Controllers')
                 ],
             ],
         ],
