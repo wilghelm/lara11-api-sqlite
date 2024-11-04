@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\OrderStatusChanged;
+
 
 /**
  * @OA\SecurityScheme(
@@ -142,6 +144,12 @@ class OrderController extends Controller
         ]);
 
         $order->update($request->only(['product_name', 'amount', 'status']));
+
+        if ($order->wasChanged('status')) {
+            $order->user->notify(new OrderStatusChanged($order, $order->status));
+        }
+        //$order->user->notify(new OrderStatusChanged($order, $order->status));
+
 
         return response()->json($order);
     }
