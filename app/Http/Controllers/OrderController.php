@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\OrderStatusChanged;
 
-
 /**
  * @OA\SecurityScheme(
  *     securityScheme="sanctum",
@@ -35,7 +34,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::where('user_id', Auth::id())->paginate(10); // Фільтрує замовлення поточного користувача
+        $orders = Order::where('user_id', Auth::id())->paginate(10);
         return response()->json($orders);
     }
 
